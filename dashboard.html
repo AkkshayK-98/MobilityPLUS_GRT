@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link href="reset.css" rel="stylesheet">
+<link href="css/styles.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<div class="content-main">
+
+<div class="header">
+	<img src="images/grt-logo.PNG">
+	<h1>Welcome To The Booking Page</h1>
+</div>
+
+<div class="navbar">
+	<button class="custombutton" onclick="window.location.href='#contactus'">Contact Us</button>
+	<button class="custombutton" onclick="window.location.href='#signoutpage'">Sign Out</button>
+</div>
+
+<br><br><br><br><br><br>
+
+<div class="containerbox">
+	<div class="box">
+		<p><b><u>Your current pickup schedule</u></b></p>
+		<table>
+			<tr>
+				<th>MON</th>
+				<th>TUE</th>
+				<th>WED</th>
+				<th>THU</th>
+				<th>FRI</th>
+				<th>SAT</th>
+				<th>SUN</th>
+			</tr>
+			<tr>
+				<td><input type="text" size="6" name="mon_time_01" readonly></td>
+				<td><input type="text" size="6" name="tue_time_01" readonly></td>
+				<td><input type="text" size="6" name="wed_time_01" readonly></td>
+				<td><input type="text" size="6" name="thu_time_01" readonly></td>
+				<td><input type="text" size="6" name="fri_time_01" readonly></td>
+				<td><input type="text" size="6" name="sat_time_01" readonly></td>
+				<td><input type="text" size="6" name="sun_time_01" readonly></td>
+			</tr>
+			<tr>
+				<td><input type="text" size="6" name="mon_time_02" readonly></td>
+				<td><input type="text" size="6" name="tue_time_02" readonly></td>
+				<td><input type="text" size="6" name="wed_time_02" readonly></td>
+				<td><input type="text" size="6" name="thu_time_02" readonly></td>
+				<td><input type="text" size="6" name="fri_time_02" readonly></td>
+				<td><input type="text" size="6" name="sat_time_02" readonly></td>
+				<td><input type="text" size="6" name="sun_time_02" readonly></td>
+			</tr>
+			<tr>
+				<td><input type="text" size="6" name="mon_time_03" readonly></td>
+				<td><input type="text" size="6" name="tue_time_03" readonly></td>
+				<td><input type="text" size="6" name="wed_time_03" readonly></td>
+				<td><input type="text" size="6" name="thu_time_03" readonly></td>
+				<td><input type="text" size="6" name="fri_time_03" readonly></td>
+				<td><input type="text" size="6" name="sat_time_03" readonly></td>
+				<td><input type="text" size="6" name="sun_time_03" readonly></td>
+			</tr>
+			<tr>
+				<td><input type="text" size="6" name="mon_time_04" readonly></td>
+				<td><input type="text" size="6" name="tue_time_04" readonly></td>
+				<td><input type="text" size="6" name="wed_time_04" readonly></td>
+				<td><input type="text" size="6" name="thu_time_04" readonly></td>
+				<td><input type="text" size="6" name="fri_time_04" readonly></td>
+				<td><input type="text" size="6" name="sat_time_04" readonly></td>
+				<td><input type="text" size="6" name="sun_time_04" readonly></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="box">
+		<p><b><u>Request a ride</u></b></p>
+		<p>Please select the time you'd like to be picked up:</p>
+		<form>
+			<input type="date" name="pickup_date">
+			<input type="time" name="pickup_time">
+		</form>
+		<br>
+		<button class="custombutton" onclick="window.location.href='#apply'">Apply</button>
+	</div>
+</div>
+<br><br>
+</div>
+<div class="footer">All names of the companies and the services they provide herein are property of Grand River Transit (GRT) Waterloo, ON.</div>
+</body>
+
+</html>
