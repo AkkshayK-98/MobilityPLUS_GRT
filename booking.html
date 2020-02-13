@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+
+    <link href="css/form_style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <img src="images/grt-logo.PNG">
+    </header>
+    <main>
+        <h1>Booking a new trip</h1>
+
+        <form>
+            <fieldset>
+                <legend>Pick up Location and Time</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="pickupDate">Date:</label><br>
+                            <input type="date" name="pickupDate">
+                        </td>
+                        <td>
+                            <label for="pickupTime">Time:</label><br>
+                            <input type="time" name="pickupTime">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="pickupaddress">Address:</label><br>
+                            <input type="text" name="pickupaddress" placeholder="eg. 123 main st.">
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <label for="pickupCity">City:</label><br>
+                            <select name="pickupCity">
+                                <option value="Kitchener">Kitchener</option>
+                                <option value="Waterloo">Kitchener</option>
+                                <option value="Cambridge">Cambridge</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label for="pickupPostalcode">Postal Code:</label><br>
+                            <input type="text" placeholder="A#A-#A#" name="pickupPostalcode">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <label for="pickupNotes">Additional notes for driver:</label><br>
+                            <input type="tel" name="pickupNotes" placeholder="eg. 'Meet at back door by parking lot'">
+                        </td>
+                    </tr>
+                </table>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Return Trip Pick up Location and Time</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="returnTripDate">Date:</label><br>
+                            <input type="date" name="returnTripDate">
+                        </td>
+                        <td>
+                            <label for="pickupTime">Time:</label><br>
+                            <input type="time" name="returnTripTime">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="returnTripaddress">Address:</label><br>
+                            <input type="text" name="returnTripaddress" placeholder="eg. 123 main st.">
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <label for="returnTripCity">City:</label><br>
+                            <select name="returnTripCity">
+                                <option value="Kitchener">Kitchener</option>
+                                <option value="Waterloo">Kitchener</option>
+                                <option value="Cambridge">Cambridge</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label for="returnTripPostalcode">Postal Code::</label><br>
+                            <input type="text" placeholder="A#A-#A#" name="returnTripPostalcode">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="returnTripNotes">Additional notes for driver:</label><br>
+                            <input type="tel" name="returnTripNotes"
+                                placeholder="eg. 'Meet at back door by parking lot'">
+                        </td>
+                    </tr>
+                </table>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Client informtion: </legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="device"> Mobility device (if any) will be used:</label><br>
+                            <select name="device">
+                                <option value="none" selected>None</option>
+                                <option value="wheelchair">Wheelchair (manual)</option>
+                                <option value="wheelchairElectric">Wheelchair (electric)</option>
+                                <option value="guidedog">Guide dog</option>
+                                <option value="walker">Walker</option>
+                                <option value="walkingCane">Walking cane</option>
+                                <option value="whiteCane">White cane (for blind)</option>
+                                <option value="walkingCane">Walking cane</option>
+
+                            </select>
+
+                        </td>
+                        <td>
+                            <label for="guest">Number of accompanying support person or guest:</label><br>
+
+                            <select name="guest">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Agreement and Submission: </legend>
+                <p class="terms">
+                    Please read and understand the conditions and policy of service listed below. The detailed policy is available on the GRT website. 
+                    <ul class="terms">
+                        <li>The driver may leave without the customer if customer is not waiting at the given pickup location just inside their door on the ground level of their building at the beginning of their pick-up window.</li>
+                        <li>The driver may leave without the customer if the customer has not ensured a safe walk or pathway to their residence door in the winter. </li>
+                        <li>The customer must cancel more than 30 minutes before the pickup window if needed, or it will be considered a no-show.</li>
+                        <li>The fare for MobilityPLUS is the same as GRT conventional buses.</li>
+                    </ul>
+                </p>
+
+                <input type="checkbox" name="agree">
+                <label for="agree" id="agreeText">By checking this box I have read, understood and agreed to the above terms</label><br>
+            
+                <input class="submitButton" type="submit" value="Submit booking">
+
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <p>All names of the companies and the services they provide herein are property of Grand River Transit (GRT)
+            Waterloo, ON</p>
+    </footer>
+</body>
