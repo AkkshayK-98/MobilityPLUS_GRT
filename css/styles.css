@@ -1,0 +1,77 @@
+body {
+	background-image: url("back.png");
+}
+
+@font-face {
+	font-family: "textfont";
+	src: url("expressway.ttf");
+}
+
+.content-main {
+	border: 1px solid #049404;
+	width: 1000px;
+	height: 580px;
+	max-width: 1000px;
+	max-height: 580px;
+	margin: auto;
+	overflow: hidden;
+}
+
+.header {
+	font-size: 25px;
+	font-family: "textfont";
+	text-align: center;
+}
+
+.navbar {
+	float: right;
+	margin: auto;
+	padding-right: 10px;
+}
+
+.custombutton {
+	width: 140px;
+	height: 50px;
+	border: none;
+	font-size: 20px;
+	font-family: textfont;
+	background-color: #049404;
+	color: #ffffff;
+	transition: 0.4s;
+}
+
+.custombutton:hover {
+	background-color: #ffffff;
+	color: #049404;
+}
+
+.containerbox {
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+}
+
+.box {
+	display: inline-block;
+	border: 1px solid #049404;
+	width: 48%;
+	height: 200px;
+	float: left;
+	margin: auto;
+	font-family: textfont;
+	text-align: center;
+}
+
+table {
+	display: flex;
+	justify-content: center;
+}
+
+.footer {
+	margin-top: 4px;
+	text-align: center;
+	font-family: "textfont";
+	color: #049404;
+	font-size: 12px;
+}
