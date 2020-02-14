@@ -13,7 +13,9 @@
 <body>
     <header>
         <img src="images/grt-logo.PNG">
+        <h1 class="title">MobilityPLUS Online Booking</h1>
     </header>
+
     <main>
         <h1>Booking a new trip</h1>
 
@@ -28,7 +30,7 @@
                         </td>
                         <td>
                             <label for="pickupTime">Time:</label><br>
-                            <input type="time" name="pickupTime">
+                            <input type="time" class="sortBox" name="pickupTime">
                         </td>
                     </tr>
                     <tr>
@@ -51,14 +53,14 @@
                         </td>
                         <td>
                             <label for="pickupPostalcode">Postal Code:</label><br>
-                            <input type="text" placeholder="A#A-#A#" name="pickupPostalcode">
+                            <input type="text" class="sortBox" placeholder="A#A-#A#" name="pickupPostalcode">
                         </td>
                     </tr>
 
                     <tr>
                         <td colspan="2">
                             <label for="pickupNotes">Additional notes for driver:</label><br>
-                            <input type="tel" name="pickupNotes" placeholder="eg. 'Meet at back door by parking lot'">
+                            <input type="text" name="pickupNotes" placeholder="eg. 'Meet at back door by parking lot'">
                         </td>
                     </tr>
                 </table>
@@ -75,7 +77,7 @@
                         </td>
                         <td>
                             <label for="pickupTime">Time:</label><br>
-                            <input type="time" name="returnTripTime">
+                            <input type="time" class="sortBox" name="returnTripTime">
                         </td>
                     </tr>
                     <tr>
@@ -98,13 +100,13 @@
                         </td>
                         <td>
                             <label for="returnTripPostalcode">Postal Code::</label><br>
-                            <input type="text" placeholder="A#A-#A#" name="returnTripPostalcode">
+                            <input type="text" class="sortBox" placeholder="A#A-#A#" name="returnTripPostalcode">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <label for="returnTripNotes">Additional notes for driver:</label><br>
-                            <input type="tel" name="returnTripNotes"
+                            <input type="text" name="returnTripNotes"
                                 placeholder="eg. 'Meet at back door by parking lot'">
                         </td>
                     </tr>
@@ -134,7 +136,7 @@
                         <td>
                             <label for="guest">Number of accompanying support person or guest:</label><br>
 
-                            <select name="guest">
+                            <select name="guest" class="sortBox">
                                 <option value="0" selected>0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -147,23 +149,32 @@
             <fieldset>
                 <legend>Agreement and Submission: </legend>
                 <p class="terms">
-                    Please read and understand the conditions and policy of service listed below. The detailed policy is available on the GRT website. 
+                    <b>Please read and understand the conditions and policy of service listed below. The detailed
+                        policy is available on the <a
+                            href="https://www.grt.ca/en/rider-information/using-specialized-services.aspx">GRT
+                            website.</a></b>
                     <ul class="terms">
-                        <li>The driver may leave without the customer if customer is not waiting at the given pickup location just inside their door on the ground level of their building at the beginning of their pick-up window.</li>
-                        <li>The driver may leave without the customer if the customer has not ensured a safe walk or pathway to their residence door in the winter. </li>
-                        <li>The customer must cancel more than 30 minutes before the pickup window if needed, or it will be considered a no-show.</li>
+                        <li>The driver may leave without the customer if customer is not waiting at the given pickup
+                            location just inside their door on the ground level of their building at the beginning
+                            of their pick-up window.</li>
+                        <li>The driver may leave without the customer if the customer has not ensured a safe walk or
+                            pathway to their residence door in the winter. </li>
+                        <li>The customer must cancel more than 30 minutes before the pickup window if needed, or it
+                            will be considered a no-show.</li>
                         <li>The fare for MobilityPLUS is the same as GRT conventional buses.</li>
                     </ul>
                 </p>
 
-                <input type="checkbox" name="agree">
-                <label for="agree" id="agreeText">By checking this box I have read, understood and agreed to the above terms</label><br>
-            
+                <input type="checkbox" class="agreeCheckBox" name="agree">
+                <label for="agree" id="agreeText">By checking this box I have read, understood and agreed to the
+                    above terms</label><br>
+
                 <input class="submitButton" type="submit" value="Submit booking">
 
             </fieldset>
         </form>
     </main>
+
     <footer>
         <p>All names of the companies and the services they provide herein are property of Grand River Transit (GRT)
             Waterloo, ON</p>

@@ -1,11 +1,15 @@
 body{
     font-size: 15pt;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #F6F7F8;
+    
 }
 header{
     background-color: #006BB4;
 }
-
+legend{
+    font-size: 1.1em;
+}
 table{
     width: 100%;
 }
@@ -23,10 +27,76 @@ footer{
 }
 fieldset{
     border: 2px groove #FDC743;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 0.9em;
+    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+
 }
 .submitButton{
     width: 350px;
     height: 60px;
+    color: white;
     font-size: 0.9em;
     background-color: #62BB47;
+    border-radius: 3px;
+    border: 2px solid #62BB47;
+    margin: 10px;
+}
+.submitButton:hover{
+    color: #62BB47;
+    background-color: white;
+}
+input, select{
+    width: 70%;
+    padding: 7px;
+    font-size: 0.8em;
+    border: 1px solid #006BB4 ;
+    background-color: #E1E8ED;
+    border-radius: 3px;
+    max-width: 500px;
+}
+td{
+    padding: 9px;
+}
+main{
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    min-width: 500px;
+    
+}
+
+input:focus{
+    border: 2px solid #006BB4 ;
+}
+.sortBox{
+    width: 50%;
+    max-width: 120px;
+}
+.agreeCheckBox{
+    
+        
+        width:30px;
+        height:30px;
+        background:white;
+        border-radius:5px;
+        border:2px solid #006BB4;
+}
+h1{
+    margin-left: 5%;
+    padding-top: 10px;
+}
+
+header h1 {
+    display: inline;
+    color: white;
+}
+
+header img{
+    background-color: white;
+    
+    margin: 10px;
 }
