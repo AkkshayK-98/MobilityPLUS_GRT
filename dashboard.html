@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+	<link href="reset.css" rel="stylesheet">
+	<link href="css/styles.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="content-main">
+
+		<header>
+			<img src="images/grt-logo.PNG">
+			<h1>Welcome To The Dashboard</h1>
+		</header>
+
+		<nav>
+			<button class="dashbutton" onclick="window.location.href='#contactus'">Contact Us</button>
+			<button class="dashbutton" onclick="window.location.href='#signoutpage'">Sign Out</button>
+		</nav>
+
+		<br><br><br><br><br><br>
+
+		<div class="containerbox">
+			<div class="box">
+				<p><b><u>
+							<h2>Your current pickup schedule</h2>
+						</u></b></p>
+				<table>
+					<tr>
+						<th>MON</th>
+						<th>TUE</th>
+						<th>WED</th>
+						<th>THU</th>
+						<th>FRI</th>
+						<th>SAT</th>
+						<th>SUN</th>
+					</tr>
+					<tr>
+						<td><input type="text" size="6" name="mon_time_01" readonly></td>
+						<td><input type="text" size="6" name="tue_time_01" readonly></td>
+						<td><input type="text" size="6" name="wed_time_01" readonly></td>
+						<td><input type="text" size="6" name="thu_time_01" readonly></td>
+						<td><input type="text" size="6" name="fri_time_01" readonly></td>
+						<td><input type="text" size="6" name="sat_time_01" readonly></td>
+						<td><input type="text" size="6" name="sun_time_01" readonly></td>
+					</tr>
+					<tr>
+						<td><input type="text" size="6" name="mon_time_02" readonly></td>
+						<td><input type="text" size="6" name="tue_time_02" readonly></td>
+						<td><input type="text" size="6" name="wed_time_02" readonly></td>
+						<td><input type="text" size="6" name="thu_time_02" readonly></td>
+						<td><input type="text" size="6" name="fri_time_02" readonly></td>
+						<td><input type="text" size="6" name="sat_time_02" readonly></td>
+						<td><input type="text" size="6" name="sun_time_02" readonly></td>
+					</tr>
+					<tr>
+						<td><input type="text" size="6" name="mon_time_03" readonly></td>
+						<td><input type="text" size="6" name="tue_time_03" readonly></td>
+						<td><input type="text" size="6" name="wed_time_03" readonly></td>
+						<td><input type="text" size="6" name="thu_time_03" readonly></td>
+						<td><input type="text" size="6" name="fri_time_03" readonly></td>
+						<td><input type="text" size="6" name="sat_time_03" readonly></td>
+						<td><input type="text" size="6" name="sun_time_03" readonly></td>
+					</tr>
+					<tr>
+						<td><input type="text" size="6" name="mon_time_04" readonly></td>
+						<td><input type="text" size="6" name="tue_time_04" readonly></td>
+						<td><input type="text" size="6" name="wed_time_04" readonly></td>
+						<td><input type="text" size="6" name="thu_time_04" readonly></td>
+						<td><input type="text" size="6" name="fri_time_04" readonly></td>
+						<td><input type="text" size="6" name="sat_time_04" readonly></td>
+						<td><input type="text" size="6" name="sun_time_04" readonly></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="box rightbox">
+				<p><b><u>
+							<h2>Request a ride</h2>
+						</u></b></p>
+				<p>Please select the time you'd like to be picked up:</p>
+				<form>
+					<input class="dashform" type="date" name="pickup_date">
+					<input class="dashform" type="time" name="pickup_time">
+				</form>
+				<br>
+				<button class="dashbutton" onclick="window.location.href='#apply'">Apply</button>
+			</div>
+		</div>
+
+		<p><b><u>
+					<h2>Detials of all you trip bookings</h2>
+				</u></b></p>
+
+				<!--This section will be filled using php, just place holder trips for now-->
+				<table id="TripDetails">
+					<tr>
+						<td>
+							<b>Pickup time: </b> 8:30am<br>
+							<b>Pickup address:</b> 75 University Ave W, Waterloo, N2L 3C5<br>
+							<b>Pickup notes: </b> meet at science building <br>
+							<br>
+							<b>Mobility device used:</b> walker
+
+							
+						</td>
+
+						<td>
+							<b>Return pickup time: </b> 10:30am<br>
+							<b>Destination/return pickup address:</b> 516 Brisbane dr, Kitchener N7C 3T6 <br>
+							<b>Return trip notes: </b> meet at driveway<br><br>
+							<b>Number of accompanying support person or guest: </b>0
+						</td>
+						<td class="canceltd"><button class="dashbutton cancelbt">Cancel trip</button></td>
+					</tr>
+
+					<tr>
+						<td>
+							<b>Pickup time: </b> 5:30pm<br>
+							<b>Pickup address:</b> 516 Brisbane dr, Kitchener N7C 3T<br>
+							<b>Pickup notes: </b>meet at driveway <br>
+							<br>
+							<b>Mobility device used:</b> Wheelchair (electric)
+
+							
+						</td>
+
+						<td>
+							<b>Return pickup time: </b> 9:30pm<br>
+							<b>Destination/return pickup address:</b> 500 University Ave W, Waterloo, N2L 3C5 <br>
+							<b>Return trip notes: </b>meet at mall enterance 2 <br><br>
+							<b>Number of accompanying support person or guest: </b>2
+						</td>
+						<td class="canceltd"><button class="dashbutton cancelbt">Cancel trip</button></td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<b>Pickup time: </b> 5:30pm<br>
+							<b>Pickup address:</b> 516 Brisbane dr, Kitchener N7C 3T<br>
+							<b>Pickup notes: </b>meet at driveway <br>
+							<br>
+							<b>Mobility device used:</b> Wheelchair (electric)
+
+							
+						</td>
+
+						<td>
+							<b>Return pickup time: </b> 9:30pm<br>
+							<b>Destination/return pickup address:</b> 123 Fake Rd W, Cambridge, N9F 8T0 <br>
+							<b>Return trip notes: </b> looby door <br><br>
+							<b>Number of accompanying support person or guest: </b>0
+						</td>
+						<td class="canceltd"><button class="dashbutton cancelbt">Cancel trip</button></td>
+					</tr>
+				</table>
+		
+
+	</div>
+	<footer>All names of the companies and the services they provide herein are property of Grand River Transit (GRT)
+		Waterloo, ON.</footer>
+</body>
+
+</html>
