@@ -51,7 +51,7 @@ fieldset{
 }
 
 .dashbutton {
-	width: 140px;
+	width: 150px;
 	height: 50px;
 	border: 2px solid  #049404;
     font-size: 20px;
@@ -197,12 +197,20 @@ h2{
     padding-left: 10px;
     padding: 5px;
 }
-#TripDetails .canceltd{
-    width: 75px;
+#TripDetails .cancelbt{
+    width:90%;
+    background-color: red;
+    border: 2px solid red;
 }
-
+#TripDetails .cancelbt:hover{
+    width:90%;
+    background-color: white;
+    
+    color: red;
+}
 button {
-    background-color: #4CAF50;
+    background-color: #049404;
+    
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -212,7 +220,9 @@ button {
 }
   
 button:hover {
-    opacity: 0.8;
+    background-color: #ffffff;
+    color: #049404;
+    border: 2px solid  #049404;
 }
 
 .cancelbtn{
