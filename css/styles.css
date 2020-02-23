@@ -17,6 +17,19 @@ footer{
     background-color: #006BB4;
     color: white;
     font-size: 10pt;
+    padding: 5px;
+    margin-top: 5px;
+}
+footer p{
+    text-align: center;
+}
+footer h2{
+    text-align: center;
+    font-size: 1.2em;
+    margin-left: 0em;
+}
+footer a{
+    color: white;
 }
 
 .terms{
