@@ -80,6 +80,7 @@ fieldset{
 	color: #049404;
 }
 
+
 .cancelbt{
     width: 100px;
 }
@@ -250,7 +251,7 @@ h2{
 }
 button {
     background-color: #049404;
-    
+    font-size: 20px;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -315,4 +316,10 @@ span.psw{
 .sign_up_main{
     margin-left: 450px;
     margin-right: 450px;
+}
+
+.cancelbtn:hover{
+    
+    border: 2px solid red;
+    color: red;   
 }
