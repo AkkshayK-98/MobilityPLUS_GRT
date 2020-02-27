@@ -141,10 +141,34 @@ header img{
 	border: none;
 	width: 1000px;
 	max-width: 1000px;
-	min-height: 580px;
-	margin: auto;
-	overflow: hidden;
+    min-height: 580px;
+    margin-right: 5%;
+    margin-left: 270px;
+    overflow: hidden;
 }
+
+.grt-twitter {
+    width: 230px;
+    position: absolute;
+    z-index: 1;
+    top: 150px;
+    left: 10px;
+    background:white;
+    overflow-x: hidden;
+    padding: 8px;
+    border-radius: 25px;
+    border: 1px solid #006BB4;
+
+  }
+  
+  @media (max-width: 1520px) {                  
+    .grt-twitter {
+       display: none;
+    }
+    .content-main{
+        margin: auto;
+    }
+ } 
 /*
 
 header {
@@ -167,7 +191,9 @@ nav {
 	overflow: hidden;
 	align-items: center;
 	justify-content: center;
+    
 }
+
 
 .box {
 	display: inline-block;
