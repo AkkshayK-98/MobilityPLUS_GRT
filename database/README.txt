@@ -1,0 +1,1 @@
+Import this file into the phpMyAdim like you did for the assignments
