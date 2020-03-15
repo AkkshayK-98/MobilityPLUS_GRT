@@ -28,7 +28,7 @@
         
         <h1>Booking a new trip</h1>
 
-        <form action="insert_booking.php" method="POST">
+        <form action="insert_booking.php" onsubmit="return validateForm()" method="POST">
             <fieldset>
                 <legend>Pick up Location and Time</legend>
                 <table>
@@ -205,4 +205,6 @@
         <p>All names of the companies and the services they provide herein are property of Grand River Transit (GRT)
             Waterloo, ON</p>
     </footer>
+
+    <script src="JS/bookingErrorCkeck.js"></script>
 </body>
