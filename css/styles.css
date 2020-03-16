@@ -323,3 +323,12 @@ span.psw{
     border: 2px solid red;
     color: red;   
 }
+
+.msgBox{
+    height: 60%;
+    border: 2px solid #FDC743;
+    text-align: center;
+}
+.lgbt{
+    width: 30%;
+}
