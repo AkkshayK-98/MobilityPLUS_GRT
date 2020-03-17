@@ -7,6 +7,22 @@ for (let i = 0; i < inputs.length; i++) {
     });
 }
 
+//confirm before leaving page with out submiting
+const dashBtn=document.querySelector("#bookingNavBtnTdash")
+dashBtn.addEventListener("click",function(){
+    var answer = confirm("You have not submitted you booking yet, all entered information will be lost. Are you sure you want to go to the dashboard?")
+    if (answer){
+        window.location.href='dashboard.html';
+    }
+});
+
+const conBtn=document.querySelector("#bookingNavBtnCon")
+conBtn.addEventListener("click",function(){
+    var answer = confirm("You have not submitted you booking yet, all entered information will be lost. Are you sure you want to go to the contact page?")
+    if (answer){
+        window.location.href='https://www.grt.ca/en/about-grt/contact-us.aspx';
+    }
+});
 
 
 function validateForm() {
