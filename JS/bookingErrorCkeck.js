@@ -8,25 +8,25 @@ for (let i = 0; i < inputs.length; i++) {
 }
 
 //confirm before leaving page with out submiting
-const dashBtn=document.querySelector("#bookingNavBtnTdash")
-dashBtn.addEventListener("click",function(){
+const dashBtn = document.querySelector("#bookingNavBtnTdash")
+dashBtn.addEventListener("click", function () {
     var answer = confirm("You have not submitted you booking yet, all entered information will be lost. Are you sure you want to go to the dashboard?")
-    if (answer){
-        window.location.href='dashboard.html';
+    if (answer) {
+        window.location.href = 'dashboard.html';
     }
 });
 
-const conBtn=document.querySelector("#bookingNavBtnCon")
-conBtn.addEventListener("click",function(){
+const conBtn = document.querySelector("#bookingNavBtnCon")
+conBtn.addEventListener("click", function () {
     var answer = confirm("You have not submitted you booking yet, all entered information will be lost. Are you sure you want to go to the contact page?")
-    if (answer){
-        window.location.href='https://www.grt.ca/en/about-grt/contact-us.aspx';
+    if (answer) {
+        window.location.href = 'https://www.grt.ca/en/about-grt/contact-us.aspx';
     }
 });
 
 
 function validateForm() {
-   // event.preventDefault();
+    // event.preventDefault();
     //get all feilds
     var pDate = document.querySelector("input[name=\"pickupDate\"]");
     var pTime = document.querySelector("input[name=\"pickupTime\"]");
@@ -89,6 +89,8 @@ function validateForm() {
     hasErrors = timeDifIs1H(pDate, pTime, rDate, rTime);
     //check check box
 
+
+
     var agreeBox = document.querySelector(".agreeCheckBox");
 
     if (agreeBox.checked == false) {
@@ -96,15 +98,25 @@ function validateForm() {
         alert("You must agree to terms of the site to continue!");
         hasErrors = true;
     }
+
+    //captcha
+    var rcres = grecaptcha.getResponse();
+    if (rcres.length) {
+        grecaptcha.reset();
+    } else {
+        hasErrors = true;
+        alert("Please check the 'I'm not a robot checkbox!")
+    }
+
     if (hasErrors) {
         console.log("Error")
         event.preventDefault();
-        
+
     } else {
-        
+
         console.log("Good")
-       // return true;
-        
+        // return true;
+
     }
 
 }
