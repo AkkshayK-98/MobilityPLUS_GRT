@@ -4,199 +4,49 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard</title>
 	<link href="reset.css" rel="stylesheet">
-	<link href="css/styles.css" type="text/css" rel="stylesheet">
+	<link href="css/stylesdash.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<header>
-		<img src="images/grt-logo.PNG">
-		<h1>Welcome To The Dashboard</h1>
-	</header>
-	<div class="content-main">
+	<div class="content_main_container">
 
+		<div class="content_sub_container">
+
+			<div class="banner_container">
+				<p class="grt_logo_container"><img class="grt_logo_image" src="images/grt_logo.png"></p>
+				<p class="banner_title"><b>Welcome To The Dashboard</b></p>
+			</div>
 		
+			<nav class="navbar">
+				<button class="navbar_button" onclick="window.location.href='booking.html'">Book A Trip</button>
+				<button class="navbar_button" onclick="window.location.href='contact_userview.html'">Contact Us</button>
+				<button class="navbar_button" onclick="window.location.href='signout.html'">Sign Out</button>
+			</nav>
 
-		<nav>
-			<button class="dashbutton" onclick="window.location.href='#contactus'">Contact Us</button>
-			<button class="dashbutton" onclick="window.location.href='#signoutpage'">Sign Out</button>
-		</nav>
+			<div class="content">
 
-		<br><br><br><br><br><br>
+				<div class="grt_twitter_feed">
+					<a class="twitter-timeline" data-width="220" data-height="460" href="https://twitter.com/GRT_ROW?ref_src=twsrc%5Etfw">Tweets by GRT_ROW</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+			
+				<div class="trip_info">
 
-		<div class="containerbox">
-			<div class="box">
-				<p><b><u>
-							<h2>Your current pickup schedule</h2>
-						</u></b></p>
-				<table>
-					<tr>
-						<th>MON</th>
-						<th>TUE</th>
-						<th>WED</th>
-						<th>THU</th>
-						<th>FRI</th>
-						<th>SAT</th>
-						<th>SUN</th>
-					</tr>
-					<tr>
-						<td><input type="text" size="6" name="mon_time_01" readonly></td>
-						<td><input type="text" size="6" name="tue_time_01" readonly></td>
-						<td><input type="text" size="6" name="wed_time_01" readonly></td>
-						<td><input type="text" size="6" name="thu_time_01" readonly></td>
-						<td><input type="text" size="6" name="fri_time_01" readonly></td>
-						<td><input type="text" size="6" name="sat_time_01" readonly></td>
-						<td><input type="text" size="6" name="sun_time_01" readonly></td>
-					</tr>
-					<tr>
-						<td><input type="text" size="6" name="mon_time_02" readonly></td>
-						<td><input type="text" size="6" name="tue_time_02" readonly></td>
-						<td><input type="text" size="6" name="wed_time_02" readonly></td>
-						<td><input type="text" size="6" name="thu_time_02" readonly></td>
-						<td><input type="text" size="6" name="fri_time_02" readonly></td>
-						<td><input type="text" size="6" name="sat_time_02" readonly></td>
-						<td><input type="text" size="6" name="sun_time_02" readonly></td>
-					</tr>
-					<tr>
-						<td><input type="text" size="6" name="mon_time_03" readonly></td>
-						<td><input type="text" size="6" name="tue_time_03" readonly></td>
-						<td><input type="text" size="6" name="wed_time_03" readonly></td>
-						<td><input type="text" size="6" name="thu_time_03" readonly></td>
-						<td><input type="text" size="6" name="fri_time_03" readonly></td>
-						<td><input type="text" size="6" name="sat_time_03" readonly></td>
-						<td><input type="text" size="6" name="sun_time_03" readonly></td>
-					</tr>
-					<tr>
-						<td><input type="text" size="6" name="mon_time_04" readonly></td>
-						<td><input type="text" size="6" name="tue_time_04" readonly></td>
-						<td><input type="text" size="6" name="wed_time_04" readonly></td>
-						<td><input type="text" size="6" name="thu_time_04" readonly></td>
-						<td><input type="text" size="6" name="fri_time_04" readonly></td>
-						<td><input type="text" size="6" name="sat_time_04" readonly></td>
-						<td><input type="text" size="6" name="sun_time_04" readonly></td>
-					</tr>
-				</table>
+					<p>PLACEHOLDER</p>
+
+				</div>
+
 			</div>
 
-			<div class="box rightbox">
-				<p><b><u>
-							<h2>Request a ride</h2>
-						</u></b></p>
-				<p>Please select the time you'd like to be picked up:</p>
-				<form>
-					<input class="dashform" type="date" name="pickup_date">
-					<input class="dashform" type="time" name="pickup_time">
-				</form>
-				<br>
-				<button class="dashbutton" onclick="window.location.href='booking.html'">Apply</button>
+			<div class="footer">
+				<p class="footer_text">All information used herein is property of Grand River Transit, Waterloo ON.</p>
 			</div>
-		</div>
 
-		<p><b><u>
-					<h2>Detials of all you trip bookings</h2>
-				</u></b></p>
-
-				<!--This section will be filled using php, just place holder trips for now-->
-				<table id="TripDetails">
-					<tr>
-						<td>
-							<b>Trip Date:</b> 2020-03-01<br>
-							<b>Pickup time: </b> 8:30am<br>
-							<b>Pickup address:</b> 75 University Ave W, Waterloo, N2L 3C5<br>
-							<b>Pickup notes: </b> meet at science building <br>
-							<br>
-							<b>Mobility device used:</b> walker
-
-							
-						</td>
-
-						<td>
-							<br>
-							<b>Return pickup time: </b> 10:30am<br>
-							<b>Destination/return pickup address:</b> 516 Brisbane dr, Kitchener N7C 3T6 <br>
-							<b>Return trip notes: </b> meet at driveway<br><br>
-							<b>Number of accompanying support person or guest: </b>0
-						</td>
-						<td class="canceltd"><button class="dashbutton cancelbt">Cancel trip</button></td>
-					</tr>
-
-					<tr>
-						<td>
-							<b>Trip Date:</b> 2020-03-07<br>
-							<b>Pickup time: </b> 5:30pm<br>
-							<b>Pickup address:</b> 516 Brisbane dr, Kitchener N7C 3T<br>
-							<b>Pickup notes: </b>meet at driveway <br>
-							<br>
-							<b>Mobility device used:</b> Wheelchair (electric)
-
-							
-						</td>
-
-						<td>
-							<br>
-							<b>Return pickup time: </b> 9:30pm<br>
-							<b>Destination/return pickup address:</b> 500 University Ave W, Waterloo, N2L 3C5 <br>
-							<b>Return trip notes: </b>meet at mall enterance 2 <br><br>
-							<b>Number of accompanying support person or guest: </b>2
-						</td>
-						<td class="canceltd"><button class="dashbutton cancelbt">Cancel trip</button></td>
-					</tr>
-
-
-					<tr>
-						<td>
-							<b>Trip Date:</b> 2020-03-10<br>
-							<b>Pickup time: </b> 5:30pm<br>
-							<b>Pickup address:</b> 516 Brisbane dr, Kitchener N7C 3T<br>
-							<b>Pickup notes: </b>meet at driveway <br>
-							<br>
-							<b>Mobility device used:</b> Wheelchair (electric)
-
-							
-						</td>
-
-						<td>
-							<br>
-							<b>Return pickup time: </b> 9:30pm<br>
-							<b>Destination/return pickup address:</b> 123 Fake Rd W, Cambridge, N9F 8T0 <br>
-							<b>Return trip notes: </b> looby door <br><br>
-							<b>Number of accompanying support person or guest: </b>0
-						</td>
-						<td class="canceltd"><button class="dashbutton cancelbt">Cancel trip</button></td>
-					</tr>
-				</table>
-		
+    	</div>
 
 	</div>
-
-
-	<div class="grt-twitter">
-		<h2>Updates from GRT</h2><br>
-		<a class="twitter-timeline" data-width="223" data-height="500" href="https://twitter.com/GRT_ROW?ref_src=twsrc%5Etfw">Tweets by GRT_ROW</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</div>
-
-	<footer>
-        <h2>Contact us</h2>
-        <p>
-            Address:<br>
-            Grand River Transit <br>
-            250 Strasburg Rd<br>
-            Kitchener, ON N2E 3M6
-        </p>
-        <p>
-            Phone: 519-585-7555<br>
-            Deaf and Hard of Hearing (TTY): 519-575-4608
-        </p>
-
-        <p>
-            <a href="https://www.facebook.com/GRTROW/">Facebook</a> - <a href="https://twitter.com/GRT_ROW">Twitter</a>
-            - <a href="https://www.grt.ca/en/index.aspx">GRT website</a>
-        </p>
-
-        <p>All names of the companies and the services they provide herein are property of Grand River Transit (GRT)
-            Waterloo, ON</p>
-    </footer>
 </body>
 
 </html>

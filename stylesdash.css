@@ -1,0 +1,111 @@
+body
+{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    color: white;
+    width: 1000px;
+    overflow: hidden;
+    margin: 0;
+}
+
+.content_main_container
+{
+    width: 50%;
+    margin: auto;
+}
+
+.content_sub_container
+{
+    float: left;
+}
+
+.banner_container
+{
+    background-color: #006BB4;
+    text-align: center;
+    min-width: 1000px;
+    height: 140px;
+    float: left;
+}
+
+.grt_logo_container
+{
+    float: left;
+    margin-left: 4%;
+    background-color: #006BB4;
+}
+
+.grt_logo_image
+{
+    height: 98px;
+}
+
+.banner_title
+{
+    font-size: 42px;
+    color: white;
+    background-color: #006BB4;
+    margin-top: 45px;
+}
+
+.navbar
+{
+    float: right;
+    margin: auto;
+}
+
+.navbar_button
+{
+    width: 150px;
+    height: 50px;
+    border: 2px solid  #049404;
+    font-size: 20px;
+    border-radius: 3px;
+    margin: 8px 0;
+    cursor: pointer;
+    background-color: #049404;
+    color: #ffffff;
+    transition: 0.4s;
+}
+
+.navbar_button:hover
+{
+    background-color: #ffffff;
+    color: #049404;
+}
+
+.content
+{
+    margin-top: 220px;
+    color: black;
+}
+
+.grt_twitter_feed
+{
+    width: 35%;
+    float: left;
+}
+
+.trip_info
+{
+    width: 65%;
+}
+
+.footer
+{
+    background-color: #006BB4;
+    text-align: center;
+    position: fixed;
+    min-width: 1000px;
+    height: 28px;
+    float: left;
+    overflow: hidden;
+    bottom: 0;
+}
+
+.footer_text
+{
+    font-size: 10px;
+    color: white;
+}
