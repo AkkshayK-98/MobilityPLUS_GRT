@@ -24,10 +24,13 @@ conBtn.addEventListener("click", function () {
     }
 });
 
+hasErrors = false;
 
 function validateForm() {
     // event.preventDefault();
     //get all feilds
+
+
     var pDate = document.querySelector("input[name=\"pickupDate\"]");
     var pTime = document.querySelector("input[name=\"pickupTime\"]");
     var pAdd = document.querySelector("input[name=\"pickupaddress\"]");
@@ -42,7 +45,7 @@ function validateForm() {
     var rNotes = document.querySelector("input[name=\"returnTripNotes\"]");
     var device = document.querySelector("input[name=\"device\"]");
     var guest = document.querySelector("input[name=\"guest\"]");
-    var hasErrors = false;
+    
     //setup error style
     var styleError = document.createElement('style');
     styleError.type = 'text/css';
@@ -50,9 +53,10 @@ function validateForm() {
     document.getElementsByTagName('head')[0].appendChild(styleError);
 
 
-
+    hasErrors = false;
     //Check for empty feilds 
     var hasEmpty = false;
+
     hasEmpty = fieldEmpty(pDate);
     hasEmpty = fieldEmpty(pTime);
     hasEmpty = fieldEmpty(pAdd);
@@ -70,23 +74,30 @@ function validateForm() {
         hasErrors = true;
     }
 
+    try {
+        pTime.value = timeConvertor(pTime.value)
+        rTime.value = timeConvertor(rTime.value)
+    } catch (error) {
+        hasErrors = true;
+    }
+
     //check for valid postal fotmat
-    hasErrors = checkPostal(pPostal);
-    hasErrors = checkPostal(rPostal);
+    checkPostal(pPostal);
+    checkPostal(rPostal);
 
     //check that pick date is one day advance
-    hasErrors = dateInFuture(pDate);
-    hasErrors = dateInFuture(rDate);
+    dateInFuture(pDate);
+    dateInFuture(rDate);
 
     //check that return date is greater or equal to start date
-    hasErrors = pickBeforeReturnDate(pDate, rDate);
+    pickBeforeReturnDate(pDate, rDate);
 
     //check if pick and return times are in hours of op
-    hasErrors = timeInHours(pTime)
-    hasErrors = timeInHours(rTime)
+    timeInHours(pTime)
+    timeInHours(rTime)
 
     //check if return time is an hour after pickup
-    hasErrors = timeDifIs1H(pDate, pTime, rDate, rTime);
+    timeDifIs1H(pDate, pTime, rDate, rTime);
     //check check box
 
 
@@ -107,7 +118,7 @@ function validateForm() {
         hasErrors = true;
         alert("Please check the 'I'm not a robot checkbox!")
     }
-
+    console.log(hasErrors)
     if (hasErrors) {
         console.log("Error")
         event.preventDefault();
@@ -115,9 +126,10 @@ function validateForm() {
     } else {
 
         console.log("Good")
-        // return true;
+        // hasErrors = true;
 
     }
+
 
 }
 
@@ -125,7 +137,7 @@ function fieldEmpty(field) {
     //console.log(field)
     if (field.value === "") {
         field.classList.add("error-form")
-        return true;
+        hasErrors = true;
     } else {
         return false;
     }
@@ -141,7 +153,7 @@ function checkPostal(field) {
     } else {
         field.classList.add("error-form")
         alert("Please ensure your postal codes are of a valid format.")
-        return true;
+        hasErrors = true;
     }
 
 }
@@ -155,7 +167,7 @@ function dateInFuture(field) {
     } else {
         field.classList.add("error-form")
         alert("You are trying to book for a date in the past or today! Please ensure you book at least 1 day in advanced!")
-        return true;
+        hasErrors = true;
     }
 
 }
@@ -168,22 +180,22 @@ function pickBeforeReturnDate(pDate, rDate) {
     } else {
         rDate.classList.add("error-form")
         alert("You return date is before your pickup date!")
-        return true;
+        hasErrors = true;
     }
 
 }
 function timeInHours(field) {
-
+    console.log(field.value)
     var time = new Date("2015-03-25T" + field.value + "Z");
     var openTime = new Date("2015-03-25T05:15:00Z");
     var closeTime = new Date("2015-03-25T23:59:59Z");
-
+    console.log(time)
     if (time >= openTime && time <= closeTime) {
         return false;
     } else {
         field.classList.add("error-form")
         alert("Your trip times must be within our hours of operation!")
-        return true;
+        hasErrors = true;
     }
 
 }
@@ -197,7 +209,31 @@ function timeDifIs1H(pDate, pTime, rDate, rTime) {
     } else {
         rTime.classList.add("error-form")
         alert("Your trip times must be within our hours of operation!")
-        return true;
+        hasErrors = true;
     }
 
+}
+function timeConvertor(time) {
+    var PM = time.match('PM') ? true : false
+    var AM = time.match('AM') ? true : false
+    if(!AM && !PM){
+        return time
+    }
+    time = time.split(':')
+
+    var min = time[1]
+
+    if (PM) {
+        var hour = parseInt(time[0], 10)
+        if (parseInt(time[0], 10) < 12) {
+            hour=hour+12
+        }
+        var min = min.replace(' PM', '')
+    } else {
+        var hour = time[0]
+        var min = min.replace(' AM', '')
+    }
+    t = hour + ':' + min + ":00"
+    console.log(t)
+    return t
 }
