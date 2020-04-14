@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signed Out</title>
-
     <link href="reset.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/stylesdash.css" type="text/css" rel="stylesheet">
 </head>
+
 <body>
-    
-    <header>
-        <img src="images/grt-logo.PNG">
-        <h1 class="title">You've Been Signed Out</h1>
-    </header>
+    <div class="content_main_container">
 
-    <div align = "middle">
-        <p>You have been securely signed out.</p>
-        <button class="dashbutton" onclick="window.location.href='index.html'">Home</button>
+        <div class="content_sub_container">
+
+            <div class="banner_container">
+                <p class="grt_logo_container"><img class="grt_logo_image" src="images/grt_logo.png"></p>
+                <p class="banner_title"><b>You have been signed out</b></p>
+            </div>
+        
+            <nav class="navbar">
+                <button class="navbar_button" onclick="window.location.href='index.html'">Sign In</button>
+                <button class="navbar_button" onclick="window.location.href='contact_guestview.html'">Contact Us</button>
+            </nav>
+
+            <div class="content">
+        		<p>Sign out successful, it is now safe to close your browser.</p>
+			</div>
+
+            <div class="footer">
+                <p class="footer_text">All information used herein is property of Grand River Transit, Waterloo ON.</p>
+            </div>
+
+        </div>
+
     </div>
-
 </body>
+
 </html>
