@@ -46,6 +46,13 @@ function validateForm() {
     var device = document.querySelector("input[name=\"device\"]");
     var guest = document.querySelector("input[name=\"guest\"]");
     
+    //sanitize inputs that user freely type in (postak checked later)
+    pAdd.value=sanitize(pAdd.value)
+    pNotes.value=sanitize(pNotes.value)
+    rAdd.value=sanitize(rAdd.value)
+    rNotes.value=sanitize(rNotes.value)
+    
+    
     //setup error style
     var styleError = document.createElement('style');
     styleError.type = 'text/css';
@@ -133,6 +140,10 @@ function validateForm() {
 
 }
 
+function sanitize(str){
+    var replaced = str.replace(/[\+\>\<\'\/\\"]+/g, '');
+    return replaced
+}
 function fieldEmpty(field) {
     //console.log(field)
     if (field.value === "") {
