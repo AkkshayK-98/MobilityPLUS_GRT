@@ -63,6 +63,21 @@
 
     #Processing form data when form is submitted
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+        $db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+        // Error checking
+        if (!$db) {
+            print "<p>Error - Could not connect to MySQL</p>";
+            exit;
+        }
+        $error = mysqli_connect_error();
+
+        if ($error != null) {
+            $output = "<p>Unable to connet to database</p>" . $error;
+            exit($output);
+        }
+
+
         // Validate first name
         if(empty($_POST["fname"])){
             $fname_err = "Please enter your first name.";
@@ -88,16 +103,40 @@
             $email_err = "Please enter your email.";
         } else{
             $email = filter_email($_POST["email"]);
-            if($email == FALSE){
+            if($email != FALSE){
+                $query = "SELECT email FROM users WHERE email = ?";
+                if($stmt = mysqli_prepare($db, $query)){
+                    // Bind variables to the prepared statement as parameters
+                    mysqli_stmt_bind_param($stmt, "s", $email);
+                    
+                    // Set parameters
+                    //$param_username = trim($_POST["username"]);
+
+                    // Attempt to execute the prepared statement
+                    if(mysqli_stmt_execute($stmt)){
+                        /* store result */
+                        mysqli_stmt_store_result($stmt);
+                        
+                        if(mysqli_stmt_num_rows($stmt) == 1){
+                            $email_err = "This username is already taken.";
+                        }
+                    } else{
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+                }
+            }
+            else{
                 $email_err = "Please enter a valid email.";
             }
+            // Close statement
+            mysqli_stmt_close($stmt);
         }
 
         // Validate id
         if(empty($_POST["id"])){
             $id_err = "Please enter your MobilityPLUS ID.";
         } else{
-            $id = filter_id($_POST["id"]);
+            $id = filter_uid($_POST["id"]);
             if($id == FALSE){
                 $id_err = "Please enter a valid MobilityPLUS ID.";
             }
@@ -109,7 +148,9 @@
         } else{
             $password = filter_pwd($_POST["pwd"]);
             if($password == FALSE){
-                $password_err = "Please enter a valid password.";
+                if($password_err == ""){
+                    $password_err = "Please enter a valid password.";
+                }
             }
         }
 
@@ -125,6 +166,39 @@
                     $r_password_err = "Passwords do not match";
                     $r_password = FALSE;
                 }
+            }
+        }
+
+        if(empty($password_err) && empty($fname_err) && empty($lname_err) && empty($email_err) && empty($id_err) && empty($r_password_err)){
+            $h_a = "4 Lolz St";
+            $h_c = "Kitchener";
+            $h_p = "L5T 4W2";
+            $d_m_d = "Wheel Chair";
+            $hash_pwd = password_hash($password, PASSWORD_DEFAULT);
+            $query = "INSERT Into users (user_id, first_name, last_name, email, password, home_address, home_city, home_postal, default_mobility_device) VALUES(?,?,?,?,?,?,?,?,?)";
+
+            if ($statement = mysqli_prepare($db, $query)) {
+
+                // bind parameters s - string,
+                $result = mysqli_stmt_bind_param($statement, 'sssssssss', $id, $fname, $lname, $email, $hash_pwd, $h_a, $h_c, $h_p, $d_m_d);
+                if (!$result) {
+                    print "<p>bounding error</p>";
+                }
+                // execute query
+                $result = mysqli_stmt_execute($statement);
+
+                if ($result) {
+                    session_start();
+                    // Store data in session variables
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["id"] = $id;
+                    $_SESSION["username"] = $username;
+                    header("location: dashboard.html");
+                } else {
+                    print "Mysql insert Error" . mysqli_stmt_error($statement);
+                }
+            } else {
+                print "<p>Error on prepare</p>";
             }
         }
     }
