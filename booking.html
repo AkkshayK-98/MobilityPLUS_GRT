@@ -34,6 +34,8 @@
         <form action="insert_booking.php" onsubmit="return validateForm()" method="POST">
             <fieldset>
                 <legend>Pick up Location and Time</legend>
+                <input type="checkbox" id="homeAddBox" class="agreeCheckBox" name="homeAdd">
+                <label for="homeAdd" id="agreeText">Use my home address</label><br>
                 <table>
                     <tr>
                         <td>
@@ -57,7 +59,7 @@
                         <td>
 
                             <label for="pickupCity">City:</label><br>
-                            <select name="pickupCity">
+                            <select  name="pickupCity">
                                 <option value="Kitchener">Kitchener</option>
                                 <option value="Waterloo">Waterloo</option>
                                 <option value="Cambridge">Cambridge</option>
@@ -214,6 +216,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type='text/javascript' src='JS/jquery.min.js'></script>
     <script type='text/javascript' src='JS/timepicki.js'></script>
+    <script src="JS/fillBooking.js"></script>
 
     <script>
         $(document).ready(function(){
