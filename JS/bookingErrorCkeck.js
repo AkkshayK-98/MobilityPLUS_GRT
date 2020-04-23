@@ -109,7 +109,7 @@ function validateForm() {
 
 
 
-    var agreeBox = document.querySelector(".agreeCheckBox");
+    var agreeBox = document.querySelector("#checkAgree");
 
     if (agreeBox.checked == false) {
 

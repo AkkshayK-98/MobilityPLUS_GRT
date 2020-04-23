@@ -2,7 +2,12 @@ $(document).ready(function () {
     //input defalt device
     $.post("MobilityDevice.php", function (data, status) {
         var dev=$("select[name=\"device\"");
-        dev.val(data.toLowerCase())
+        console.log(data)
+        if(data =="Error"){
+            alert("You are not logged in please do so before booking")
+            window.location.replace("index.html");
+        }
+        dev.val(data)
     })
     $("#homeAddBox").click(function () {
         //input defalt home address for user
@@ -13,7 +18,10 @@ $(document).ready(function () {
         if ($(this).prop("checked") == true) {
             //request home adress
             $.post("homeAdd.php", function (data, status) {
-                
+                if(data =="Error"){
+                    alert("You are not logged in please do so before booking")
+                    window.location.replace("index.html");
+                }
                 var add =JSON.parse(data)
                 pAdd.val(add.address)
                 pPostal.val(add.postal)

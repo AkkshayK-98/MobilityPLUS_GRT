@@ -402,7 +402,7 @@
                         <option value="walker">Walker</option>
                         <option value="walkingCane">Walking cane</option>
                         <option value="whiteCane">White cane (for blind)</option>
-                        <option value="walkingCane">Walking cane</option>
+            
                     </select>
                 </div>        	
             </div>

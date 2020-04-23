@@ -21,9 +21,16 @@
             <?php
             include_once 'include/config.php';
 
-
+            //check that user is loged in
+            session_start();
+            $_SESSION["loggedin"] = true;
+            if(!isset($_SESSION["loggedin"])&&!$_SESSION["loggedin"]){
+                header("location: index.html");
+            }
+            $userId=$_SESSION["id"];
+        
             //get values from post
-            $userId = 111; //temporary
+            
             $pickUpDate = $_POST["pickupDate"];
             $pickUpTime = $_POST["pickupTime"];
             $pickUpAddress = $_POST["pickupaddress"];
