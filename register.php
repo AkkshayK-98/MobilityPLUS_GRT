@@ -226,7 +226,7 @@
                     // Store data in session variables
                     $_SESSION["loggedin"] = true;
                     $_SESSION["id"] = $id;
-                    $_SESSION["username"] = $username;
+                    $_SESSION["username"] = $email;
                     header("location: dashboard.html");
                 } else {
                     print "Mysql insert Error" . mysqli_stmt_error($statement);
