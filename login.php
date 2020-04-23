@@ -77,7 +77,7 @@
                                 $_SESSION["username"] = $username;
 
                                 // Redirect user to welcome page
-                                header("location: dashboard.php");
+                                header("location: dashboard.html");
                             }
                             else{
                                 //display error statement for invalid password
@@ -87,7 +87,7 @@
                     }
                     else{
                         //display error stament for invalid username
-                        $username_err = "Username is NOT VALID";
+                        $username_err = "Email is NOT VALID";
                     }
                 }
                 else{
@@ -111,6 +111,86 @@
 
     <link href="reset.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+    <link href="css/styles.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            color: #999;
+            background: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
+            font-size: 20pt;
+        }
+        .form-control {
+            border-color: #eee;
+            min-height: 41px;
+            box-shadow: none !important;
+        }
+        .form-control:focus {
+            border-color: #5cd3b4;
+        }
+        .form-control, .btn {        
+            border-radius: 3px;
+        }
+        .signin-form {
+            width: 800px;
+            margin: 100px auto;
+            padding: 30px 0;
+        }
+        .signin-form h2 {
+            color: #333;
+            margin: 0 0 30px 0;
+            display: inline-block;
+            padding: 0 30px 10px 0;
+            border-bottom: 3px solid #5cd3b4;
+        }
+        .signin-form form {
+            color: #999;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        .signin-form .form-group {
+            margin-bottom: 20px;
+        }
+        .signin-form label {
+            font-weight: normal;
+            font-size: 20pt;
+        }
+        .signin-form input[type="checkbox"] {
+            margin-top: 2px;
+        }
+        .signin-form .btn {        
+            font-size: 16px;
+            font-weight: bold;
+            background: #5cd3b4;
+            border: none;
+            margin-top: 20px;
+            min-width: 140px;
+        }
+        .signin-form .btn:hover, .signup-form .btn:focus {
+            background: #41cba9;
+            outline: none !important;
+        }
+        .signin-form a {
+            color: #5cd3b4;
+            text-decoration: underline;
+        }
+        .signin-form a:hover {
+            text-decoration: none;
+        }
+        .signin-form form a {
+            color: #5cd3b4;
+            text-decoration: none;
+        }	
+        .signin-form form a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     
@@ -119,29 +199,32 @@
         <h1 class="title">MobilityPLUS Online Booking</h1>
     </header>
 
-    <main class="sign_in_main">
-        <h2>Sign In</h2>
-        <h2 class="sign_up"><a href="signup.html">Sign Up</a></h2>
-
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" class="signInForm" method="post">
-            <div class="container" <?php echo (!empty($username_err))?'has-error' : '';?>>
-                <label for="uname"><b>Username</b></label><br>
-                <input type="text" placeholder="Enter Username" name="uname" value="<?php echo $username;?>"><br>
-                <span><?php echo $username_err;?></span><br>
-
-                <label for="pwd"><b>Password</b></label><br>
-                <input type="password" placeholder="Enter Password" name="pwd" value="<?php echo $password;?>"><br>
-                <span><?php echo $password_err;?></span><br>
-                    
-                <button type="submit">Login</button>
+    <main class="signin-form">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" class="form-horizontal" method="post">
+            <div class="col-xs-8 col-xs-offset-4">
+                <h2>Sign Up</h2>
+            </div>    
+            <div class="form-group">
+                <label class="control-label col-xs-4">Email</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="uname" required="required">
+                    <span><?php echo $username_err;?></span><br>
+                </div>        	
             </div>
-
-            <div class="container_bot">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Password</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="pwd" required="required">
+                    <span><?php echo $password_err;?></span><br>
+                </div>        	
             </div>
-
+            <div class="form-group">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+                </div>  
+            </div>	
         </form>
+        <div class="text-center">Don't have an account? <a href="signup.html">SignUp here</a></div>
     </main>
 
 </body>
