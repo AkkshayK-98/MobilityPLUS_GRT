@@ -21,7 +21,7 @@
 
     function filter_address($field){
         //Validate address
-        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^\\d+ [a-zA-Z ]/")))){
+        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^\d+\s[A-z]+\s[A-z]+/")))){
             return $field;
         }else{
             return FALSE;
@@ -30,7 +30,7 @@
 
     function filter_postal_code($field){
         //Validate postal code
-        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/")))){
+        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^([a-zA-Z]\d[a-zA-Z])\ {0,1}(\d[a-zA-Z]\d)$/")))){
             return $field;
         }else{
             return FALSE;
