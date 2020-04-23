@@ -129,7 +129,7 @@
             box-shadow: none !important;
         }
         .form-control:focus {
-            border-color: #5cd3b4;
+            border-color: #1C80EB;
         }
         .form-control, .btn {        
             border-radius: 3px;
@@ -144,7 +144,7 @@
             margin: 0 0 30px 0;
             display: inline-block;
             padding: 0 30px 10px 0;
-            border-bottom: 3px solid #5cd3b4;
+            border-bottom: 3px solid #1C80EB;
         }
         .signin-form form {
             color: #999;
@@ -167,24 +167,25 @@
         .signin-form .btn {        
             font-size: 16px;
             font-weight: bold;
-            background: #5cd3b4;
+            background: #1C80EB;
             border: none;
             margin-top: 20px;
             min-width: 140px;
         }
         .signin-form .btn:hover, .signup-form .btn:focus {
-            background: #41cba9;
+            background: lightblue;
             outline: none !important;
         }
         .signin-form a {
-            color: #5cd3b4;
+            color: #1C80EB;
             text-decoration: underline;
         }
         .signin-form a:hover {
+            color: lightblue;
             text-decoration: none;
         }
         .signin-form form a {
-            color: #5cd3b4;
+            color: #1C80EB;
             text-decoration: none;
         }	
         .signin-form form a:hover {
