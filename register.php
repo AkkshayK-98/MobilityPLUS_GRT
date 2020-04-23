@@ -19,6 +19,24 @@
         }
     }
 
+    function filter_address($field){
+        //Validate address
+        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^\\d+ [a-zA-Z ]+, \\d+ [a-zA-Z ]+, [a-zA-Z ]+$/")))){
+            return $field;
+        }else{
+            return FALSE;
+        }
+    }
+
+    function filter_postal_code($field){
+        //Validate postal code
+        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[ABCEGHJKLMNPRSTVXY]d[A-Z] d[A-Z]d$/i")))){
+            return $field;
+        }else{
+            return FALSE;
+        }
+    }
+
     function filter_email($field){
         //Sanitize email
         $field - filter_var(trim($field),FILTER_SANITIZE_EMAIL);
@@ -58,8 +76,8 @@
 
     }
 
-    $email = $password = $r_password = $id = $fname = $lname = "";
-    $email_err = $password_err = $r_password_err = $id_err = $fname_err = $lname_err = "";
+    $email = $password = $r_password = $id = $fname = $lname = $h_a = $h_p = $h_c = $d_m_d = "";
+    $email_err = $password_err = $r_password_err = $id_err = $fname_err = $lname_err = $h_a_err = $h_p_err = $h_c_err = $d_m_d_err ="";
 
     #Processing form data when form is submitted
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -95,6 +113,26 @@
             $lname = filter_name($_POST["lname"]);
             if($lname == FALSE){
                 $lname_err = "Please enter a valid last name.";
+            }
+        }
+
+        // Validate home address
+        if(empty($_POST["h_a"])){
+            $h_a_err = "Please enter your home address";
+        } else{
+            $h_a = filter_address($_POST["h_a"]);
+            if($h_a == FALSE){
+                $h_a_err = "Please enter a valid home address.";
+            }
+        }
+
+        // Validate postal code
+        if(empty($_POST["h_p"])){
+            $h_p_err = "Please enter your postal code.";
+        } else{
+            $h_p = filter_postal_code($_POST["h_p"]);
+            if($h_p == FALSE){
+                $h_p_err = "Please enter a valid home postal code.";
             }
         }
 
@@ -169,11 +207,7 @@
             }
         }
 
-        if(empty($password_err) && empty($fname_err) && empty($lname_err) && empty($email_err) && empty($id_err) && empty($r_password_err)){
-            $h_a = "4 Lolz St";
-            $h_c = "Kitchener";
-            $h_p = "L5T 4W2";
-            $d_m_d = "Wheel Chair";
+        if(empty($password_err) && empty($fname_err) && empty($lname_err) && empty($email_err) && empty($id_err) && empty($r_password_err) && empty($h_a_err) && empty($h_p_err)){
             $hash_pwd = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT Into users (user_id, first_name, last_name, email, password, home_address, home_city, home_postal, default_mobility_device) VALUES(?,?,?,?,?,?,?,?,?)";
 
@@ -213,58 +247,187 @@
     <title>Sign Up</title>
 
     <link href="reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <link href="css/styles.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            color: #999;
+            background: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
+        }
+        .form-control {
+            border-color: #eee;
+            min-height: 41px;
+            box-shadow: none !important;
+        }
+        .form-control:focus {
+            border-color: #5cd3b4;
+        }
+        .form-control, .btn {        
+            border-radius: 3px;
+        }
+        .signup-form {
+            width: 800px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+        .signup-form h2 {
+            color: #333;
+            margin: 0 0 30px 0;
+            display: inline-block;
+            padding: 0 30px 10px 0;
+            border-bottom: 3px solid #5cd3b4;
+        }
+        .signup-form form {
+            color: #999;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        .signup-form .form-group {
+            margin-bottom: 20px;
+        }
+        .signup-form label {
+            font-weight: normal;
+            font-size: 13px;
+        }
+        .signup-form input[type="checkbox"] {
+            margin-top: 2px;
+        }
+        .signup-form .btn {        
+            font-size: 16px;
+            font-weight: bold;
+            background: #5cd3b4;
+            border: none;
+            margin-top: 20px;
+            min-width: 140px;
+        }
+        .signup-form .btn:hover, .signup-form .btn:focus {
+            background: #41cba9;
+            outline: none !important;
+        }
+        .signup-form a {
+            color: #5cd3b4;
+            text-decoration: underline;
+        }
+        .signup-form a:hover {
+            text-decoration: none;
+        }
+        .signup-form form a {
+            color: #5cd3b4;
+            text-decoration: none;
+        }	
+        .signup-form form a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-    
     <header>
         <img src="images/grt-logo.PNG">
         <h1 class="title">MobilityPLUS Online Booking</h1>
     </header>
 
-    <main class="sign_up_main">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" class="signInForm" method="post">
-            <div class="container">
-                <h1>Sign Up</h1>
-                <p>Please fill in this form to create an account.</p>
-                <hr>
-                
-                <label for="fname"><b>First Name</b></label>
-                <input type="text" placeholder="Enter First Name" name="fname"><br>
-                <span><?php echo $fname_err;?></span><br>
-
-                <label for="lname"><b>Last Name</b></label>
-                <input type="text" placeholder="Enter Last Name" name="lname"><br>
-                <span><?php echo $lname_err;?></span><br>
-
-                <label for="id"><b>Mobility PLUS ID</b></label>
-                <input type="text" placeholder="Enter Mobility PLUS ID" name="id"> <br>
-                <span><?php echo $id_err;?></span><br>
-            
-                <label for="email"><b>Email</b></label><br>
-                <input type="text" placeholder="Enter Email" name="email"><br>
-                <span><?php echo $email_err;?></span><br>
-            
-                <label for="pwd"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pwd"><br>
-                <span><?php echo $password_err;?></span><br>
-            
-                <label for="r_pwd"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="r_pwd"><br>
-                <span><?php echo $r_password_err;?></span><br>
-            
-                <label>
-                    <input class="agreeCheckBox"  type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                </label>
-            
-                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-            
-                <div class="container_bot">
-                    <button type="button" class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signupbtn">Sign Up</button>
-                </div>
+    <main class="signup-form">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" class="form-horizontal" method="post">
+            <div class="col-xs-8 col-xs-offset-4">
+                <h2>Sign Up</h2>
+            </div>	
+            <div class="form-group">
+                <label class="control-label col-xs-4">First Name</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="fname" required="required">
+                    <span><?php echo $fname_err;?></span><br>
+                </div>        	
             </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Last Name</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="lname" required="required">
+                    <span><?php echo $lname_err;?></span><br>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">MobolityPLUS ID</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="id" required="required">
+                    <span><?php echo $id_err;?></span><br>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Email</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="email" required="required">
+                    <span><?php echo $email_err;?></span><br>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Home Address</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="h_a" required="required">
+                    <span><?php echo $h_a_err;?></span><br>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Home Postal Code</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="h_p" required="required">
+                    <span><?php echo $h_p_err;?></span><br>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Home City</label>
+                <div class="col-xs-8">
+                    <select name="h_c">
+                        <option value="Kitchener">Kitchener</option>
+                        <option value="Waterloo">Waterloo</option>
+                        <option value="Cambridge">Cambridge</option>
+                    </select>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Default Mobility Device</label>
+                <div class="col-xs-8">
+                    <select name="d_m_d">
+                        <option value="none" selected>None</option>
+                        <option value="wheelchair">Wheelchair (manual)</option>
+                        <option value="wheelchairElectric">Wheelchair (electric)</option>
+                        <option value="guidedog">Guide dog</option>
+                        <option value="walker">Walker</option>
+                        <option value="walkingCane">Walking cane</option>
+                        <option value="whiteCane">White cane (for blind)</option>
+                        <option value="walkingCane">Walking cane</option>
+                    </select>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Password</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="pwd" required="required">
+                    <span><?php echo $password_err;?></span><br>
+                </div>        	
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4">Repeat Password</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="r_pwd" required="required">
+                    <span><?php echo $r_password_err;?></span><br>
+                </div>        	
+            </div>
+            
+            <div class="form-group">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <p><label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>.</label></p>
+                    <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                </div>  
+            </div>	
         </form>
+        <div class="text-center">Already have an account? <a href="index.html">Login here</a></div>
     </main>
 </body>
 </html>
