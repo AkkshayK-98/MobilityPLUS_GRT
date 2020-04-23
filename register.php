@@ -21,7 +21,7 @@
 
     function filter_address($field){
         //Validate address
-        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^\\d+ [a-zA-Z ]+, \\d+ [a-zA-Z ]+, [a-zA-Z ]+$/")))){
+        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^\\d+ [a-zA-Z ]/")))){
             return $field;
         }else{
             return FALSE;
@@ -30,7 +30,7 @@
 
     function filter_postal_code($field){
         //Validate postal code
-        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[ABCEGHJKLMNPRSTVXY]d[A-Z] d[A-Z]d$/i")))){
+        if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/")))){
             return $field;
         }else{
             return FALSE;
@@ -39,7 +39,7 @@
 
     function filter_email($field){
         //Sanitize email
-        $field - filter_var(trim($field),FILTER_SANITIZE_EMAIL);
+        $field = filter_var(trim($field),FILTER_SANITIZE_EMAIL);
 
         //Validate email
         if(filter_var($field, FILTER_VALIDATE_EMAIL)){
@@ -51,7 +51,7 @@
     
     function filter_uid($field){
         //Sanitize email
-        $field - filter_var(trim($field),FILTER_SANITIZE_INT);
+        $field - filter_var(trim($field),FILTER_SANITIZE_NUMBER_INT);
 
         //Validate email
         if(filter_var($field, FILTER_VALIDATE_INT)){
@@ -206,7 +206,8 @@
                 }
             }
         }
-
+        $d_m_d=$_POST["d_m_d"];
+        $h_c=$_POST["h_c"];
         if(empty($password_err) && empty($fname_err) && empty($lname_err) && empty($email_err) && empty($id_err) && empty($r_password_err) && empty($h_a_err) && empty($h_p_err)){
             $hash_pwd = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT Into users (user_id, first_name, last_name, email, password, home_address, home_city, home_postal, default_mobility_device) VALUES(?,?,?,?,?,?,?,?,?)";
