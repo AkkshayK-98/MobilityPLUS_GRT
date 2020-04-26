@@ -89,7 +89,7 @@ body
 
 .trip_info
 {
-    width: 65%;
+    width: 1000px;
 }
 
 .footer
@@ -109,3 +109,50 @@ body
     font-size: 10px;
     color: white;
 }
+
+.info_display_table
+{
+    border: 1px solid black;
+}
+
+.info_display_table_row
+{
+    border: 1px solid black;
+    background-color:#9eddff;
+}
+
+.info_display_table_row_content_1
+{
+    width:90%;
+    border: 1px solid black;
+    padding-left: 4px;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+
+.info_display_table_row_content_2
+{
+    width:10%;
+    border: 1px solid black;
+}
+
+.cancel_button
+{
+    width: 80px;
+    height: 40px;
+    border: 2px solid  red;
+    font-size: 20px;
+    border-radius: 3px;
+    margin: 8px 0;
+    cursor: pointer;
+    background-color: red;
+    color: #ffffff;
+    transition: 0.4s;
+}
+
+.cancel_button:hover
+{
+    background-color: #ffffff;
+    color: red;
+}
+
