@@ -16,17 +16,6 @@
 	$result = mysqli_query($connection, $sql);
 	$row = $result->fetch_all(MYSQLI_ASSOC);
 
-	if(isset($_POST['del0']))
-	{ 
-            del_entry(0); 
-    }
-
-    function del_entry($v)
-    {
-    	$sql2 = "DELETE * FROM bookings WHERE (bookings.user_id = $row[$v]['trip_id'] AND bookings.trip_id = $row[$v]['trip_id'])";
-    	mysqli_query($connection, $sql2);
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -88,9 +77,18 @@
 					//print_r($row);
 					//echo "$row[$v]['trip_id']";
 					?>
-
 					<table class="info_display_table">
+						<tr><td><b><u>YOUR TRIPS</u></b></td></tr>
 					<?php
+					if(!$result)
+					{
+						echo "<tr><td><b>No trips booked at this time.</b></td></tr>";
+					}
+					if($result->num_rows == 0)
+					{
+						echo "<tr><td>No trips booked at this time...</td></tr>";
+					}
+					else{
 					for($i = 0; $i < $result->num_rows; $i++)
 					{
 						$moment = $row[$i]['pick_up_time'];
@@ -99,7 +97,7 @@
 On: '.$row[$i]['pick_up_date'].', '.date("H:i A", strtotime($moment));
 							echo"</td>";
 							echo'<td class="info_display_table_row_content_2">';
-							echo'<center><form method="post"><input type="submit" class="cancel_button" name="del'.$i.'" value="Cancel"></form></center>';
+							echo'<center><form method="post"><input type="hidden" class="cancel_button" name=deltrip value='.$row[$i]["trip_id"].'><input type="submit" class="cancel_button" name=deltrips value="Cancel"></form></center>';
 							echo"</td>";
 						echo"</tr>";
 						if($i > 4)
@@ -107,6 +105,13 @@ On: '.$row[$i]['pick_up_date'].', '.date("H:i A", strtotime($moment));
 							break;
 						}
 					}
+					if(array_key_exists('deltrips',$_POST))
+					{
+						//echo $_POST['deltrip'];
+						$sql2 = "DELETE FROM bookings WHERE bookings.trip_id = ".htmlspecialchars($_POST['deltrip']);
+						$result=mysqli_query($connection, $sql2);
+						header("Refresh:0");
+				    }}
 					?>
 					</table>
 					
