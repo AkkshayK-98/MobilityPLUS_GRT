@@ -203,7 +203,7 @@
     <main class="signin-form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" class="form-horizontal" method="post">
             <div class="col-xs-8 col-xs-offset-4">
-                <h2>Sign Up</h2>
+                <h2>Sign In</h2>
             </div>    
             <div class="form-group">
                 <label class="control-label col-xs-4">Email</label>
