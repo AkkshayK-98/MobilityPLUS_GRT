@@ -215,7 +215,7 @@
             <div class="form-group">
                 <label class="control-label col-xs-4">Password</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control" name="pwd" required="required">
+                    <input type="password" class="form-control" name="pwd" required="required">
                     <span><?php echo $password_err;?></span><br>
                 </div>        	
             </div>
